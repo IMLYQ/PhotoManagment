@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PhotoManagment.Models.Place>
+
+@{
+    ViewData["Title"] = "地名";
+}
+    <head>
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="~/css/Common/Full.css" rel="stylesheet" />
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="~/js/Place/Place.js"></script>
+    </head> 
+<body>
+    <div id="place">
+        <div class="panel panel-info" style="margin:20px">
+            <div class="panel-heading">
+                <h3> {{ name }}取景地</h3>
+            </div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <!--v-on:click Vue指令绑定方法-->
+                        <button class="btn btn-info" v-on:click="add()">添加</button>
+                    </span>
+
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>地点</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.placename)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.id">编辑</a> |
+                                    <a asp-action="Details" asp-route-id="@item.id">详情</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.id">删除</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

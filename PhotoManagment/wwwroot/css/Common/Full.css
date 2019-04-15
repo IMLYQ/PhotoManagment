@@ -1,0 +1,7 @@
+﻿body {
+}
+/*控制全局内容容器的宽度*/
+.container {
+    width:1240px;
+max-width:1240px;
+}
